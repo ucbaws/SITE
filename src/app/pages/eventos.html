@@ -1,0 +1,81 @@
+<section class="events-hero container" aria-labelledby="events-title">
+  <a class="back-link" routerLink="/">
+    <app-icon name="arrow" />
+    Voltar ao início
+  </a>
+  <p class="eyebrow">Eventos e encontros</p>
+  <h1 id="events-title" tabindex="-1">Aprender fica melhor quando a gente se encontra.</h1>
+  <p>
+    Veja os próximos encontros da comunidade, confira os detalhes e garanta seu ingresso quando as
+    inscrições estiverem abertas.
+  </p>
+</section>
+
+<section class="agenda container" aria-labelledby="agenda-title">
+  <div class="agenda-head">
+    <div>
+      <p class="eyebrow">Agenda</p>
+      <h2 class="section-title" id="agenda-title">Próximo encontro.</h2>
+    </div>
+  </div>
+  <p class="agenda-note">
+    Eventos confirmados exibem o botão de ingresso com acesso direto à página oficial.
+  </p>
+
+  <div class="event-list">
+    @for (evento of eventos; track evento.id) {
+      <article>
+        <div class="event-index">0{{ $index + 1 }}</div>
+
+        <div class="event-copy">
+          <div class="event-tags">
+            <span class="tag">{{ evento.categoria }}</span>
+            <span>{{ evento.formato }}</span>
+          </div>
+          <h3>{{ evento.titulo }}</h3>
+          <p>{{ evento.descricao }}</p>
+          <div class="event-meta">
+            <span><app-icon name="calendar" /> {{ formatarData(evento) }}</span>
+            <span><app-icon name="clock" /> {{ evento.horario }}</span>
+            <span><app-icon name="pin" /> {{ evento.local }}</span>
+          </div>
+        </div>
+
+        <div class="event-action">
+          <span>{{ evento.status === 'aberto' ? 'Inscrições abertas' : 'Evento encerrado' }}</span>
+          @if (evento.status === 'aberto') {
+            <a
+              class="button primary"
+              [href]="evento.linkIngresso"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Pegar ingresso
+              <app-icon name="diagonal" />
+            </a>
+          }
+          <button
+            class="proposal-toggle"
+            type="button"
+            [attr.aria-expanded]="eventoExpandido() === evento.id"
+            [attr.aria-controls]="'detalhes-' + evento.id"
+            (click)="alternarDetalhes(evento.id)"
+          >
+            {{ eventoExpandido() === evento.id ? 'Fechar detalhes' : 'Ver detalhes' }}
+          </button>
+        </div>
+
+        @if (eventoExpandido() === evento.id) {
+          <div class="proposal" [id]="'detalhes-' + evento.id">
+            <h4>O que você encontrará</h4>
+            <ul>
+              @for (detalhe of evento.detalhes; track detalhe) {
+                <li>{{ detalhe }}</li>
+              }
+            </ul>
+          </div>
+        }
+      </article>
+    }
+  </div>
+</section>

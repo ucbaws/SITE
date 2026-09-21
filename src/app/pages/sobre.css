@@ -1,0 +1,200 @@
+:host {
+  display: block;
+}
+
+.about-hero {
+  min-width: 0;
+  padding-block: 68px 78px;
+}
+
+.about-hero > div {
+  max-width: 850px;
+}
+
+.about-hero h1 {
+  margin: 14px 0 26px;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -.06em;
+  text-wrap: balance;
+}
+
+.about-hero > div > p:last-child {
+  max-width: 760px;
+  margin-bottom: 38px;
+  color: var(--gray-300);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.about-hero > .back-link app-icon {
+  width: 14px;
+  transform: rotate(180deg);
+}
+
+.about-hero > img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 1;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, .2);
+}
+
+.team {
+  padding-block: 72px 90px;
+  border-top: 1px solid var(--border);
+}
+
+.section-head > p {
+  max-width: 470px;
+  margin: 0;
+  color: var(--gray-300);
+  line-height: 1.7;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.member-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--border-light);
+  border-radius: 12px;
+  background: var(--bg-subtle);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .16);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.member-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 20px 42px rgba(0, 0, 0, .24);
+  transform: translateY(-4px);
+}
+
+.member-card > img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(.9);
+  transition: filter .2s ease, transform .35s ease;
+}
+
+.member-card:hover > img {
+  filter: saturate(1);
+  transform: scale(1.015);
+}
+
+.member-card > div {
+  padding: 21px;
+}
+
+.member-role {
+  margin-bottom: 7px;
+  color: var(--blue);
+  font: .7rem var(--mono);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.member-card h3 {
+  margin-bottom: 14px;
+  font-size: 1.45rem;
+}
+
+.member-card details {
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.member-card summary {
+  min-height: 40px;
+  color: var(--gray-200);
+  font-size: .84rem;
+  cursor: pointer;
+}
+
+.member-card details p {
+  color: var(--gray-300);
+  font-size: .84rem;
+  line-height: 1.7;
+}
+
+.member-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 15px;
+}
+
+.member-links a {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 7px;
+  color: var(--gray-200);
+  font-size: .82rem;
+}
+
+.member-links a:hover {
+  color: var(--blue);
+}
+
+.member-links app-icon {
+  width: 16px;
+}
+
+@media (max-width: 850px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .about-hero {
+    padding-block: 40px 54px;
+  }
+
+  .about-hero > img {
+    border-radius: 8px;
+  }
+
+  .team {
+    padding-block: 52px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .member-card {
+    display: grid;
+    grid-template-columns: minmax(120px, 42%) minmax(0, 1fr);
+  }
+
+  .member-card > img {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .member-card h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .member-card {
+    display: block;
+  }
+
+  .member-card > img {
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+}

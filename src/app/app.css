@@ -1,0 +1,359 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--border);
+  background: rgba(19, 27, 37, .9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.header-inner {
+  display: flex;
+  height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.brand {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  line-height: 1.12;
+}
+
+.brand img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 9px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .2);
+  transition: transform .45s ease, box-shadow .25s ease;
+}
+
+.brand:hover img {
+  box-shadow: 0 8px 24px rgba(67, 183, 244, .16);
+  transform: rotate(90deg);
+}
+
+.brand small {
+  display: block;
+  margin-top: 3px;
+  color: var(--gray-300);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.desktop-nav {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 26px;
+}
+
+.desktop-nav a {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  color: var(--gray-300);
+  font-size: .9rem;
+  font-weight: 650;
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.active {
+  border-color: var(--blue);
+  color: var(--white);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accessibility-symbol {
+  font-size: .86rem;
+  font-weight: 800;
+}
+
+.mobile-toggle,
+.mobile-nav {
+  display: none;
+}
+
+.community-cta {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(120deg, var(--bg-subtle), rgba(29, 42, 56, .72));
+}
+
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 44px;
+  padding-block: 58px;
+}
+
+.cta-inner h2 {
+  margin-bottom: 8px;
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  letter-spacing: -.04em;
+  text-wrap: balance;
+}
+
+.cta-inner p:last-child {
+  max-width: 660px;
+  margin-bottom: 0;
+  color: var(--gray-300);
+  line-height: 1.7;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 48px;
+  padding-block: 46px;
+}
+
+.footer-main nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--gray-300);
+}
+
+.footer-main nav a:hover {
+  color: var(--blue);
+}
+
+.footer-main > p {
+  color: var(--gray-200);
+  line-height: 1.7;
+}
+
+.footer-main > p span {
+  color: var(--gray-400);
+  font-size: .86rem;
+}
+
+.footer-bottom {
+  padding-block: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--gray-400);
+  font-size: .78rem;
+}
+
+.portal-dialog {
+  width: min(620px, calc(100% - 32px));
+  max-height: 88dvh;
+  margin: auto;
+  padding: 30px;
+  overflow: auto;
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--white);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .5);
+}
+
+.portal-dialog::backdrop {
+  background: rgba(3, 8, 12, .82);
+  backdrop-filter: blur(5px);
+}
+
+.dialog-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.dialog-top .eyebrow {
+  margin: 0;
+}
+
+.portal-dialog h2 {
+  margin: 14px 0 20px;
+  font-size: 2rem;
+  letter-spacing: -.04em;
+}
+
+.accessibility-dialog > .muted {
+  line-height: 1.7;
+}
+
+.preference-list {
+  display: grid;
+  margin-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.preference-list label {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.preference-list strong,
+.preference-list small {
+  display: block;
+}
+
+.preference-list small {
+  margin-top: 4px;
+  color: var(--gray-300);
+}
+
+.preference-list input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--blue);
+}
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  overflow: hidden;
+  background: var(--bg);
+  animation: intro-out .45s 1.4s ease forwards;
+}
+
+.intro-screen img {
+  z-index: 1;
+  width: 136px;
+  height: 136px;
+  border-radius: 24px;
+  animation: logo-in .8s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.intro-screen p {
+  z-index: 1;
+  margin: 20px 0 4px;
+  font-weight: 800;
+  animation: copy-in .5s .35s ease both;
+}
+
+.intro-screen .intro-place {
+  z-index: 1;
+  color: var(--gray-300);
+  font-size: .78rem;
+  animation: copy-in .5s .48s ease both;
+}
+
+@keyframes logo-in {
+  from { opacity: 0; transform: scale(.55) rotate(-90deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes copy-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes intro-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@media (max-width: 860px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: inline-flex;
+  }
+
+  .mobile-nav {
+    position: absolute;
+    top: 72px;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 20px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .mobile-nav > a,
+  .mobile-accessibility {
+    display: flex;
+    min-height: 50px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    color: var(--gray-200);
+    text-align: left;
+  }
+
+  .mobile-nav > a.active,
+  .mobile-accessibility:hover {
+    color: var(--blue);
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-main > .brand {
+    grid-column: 1 / -1;
+  }
+
+  .cta-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 540px) {
+  .brand span {
+    font-size: .88rem;
+  }
+
+  .brand small {
+    font-size: .62rem;
+  }
+
+  .header-actions {
+    gap: 5px;
+  }
+
+  .header-actions > .icon-button:first-child {
+    display: none;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-main > .brand {
+    grid-column: auto;
+  }
+
+  .portal-dialog {
+    padding: 22px;
+  }
+
+  .cta-inner {
+    padding-block: 42px;
+  }
+}

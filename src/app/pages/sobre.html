@@ -1,0 +1,72 @@
+<section class="about-hero container" aria-labelledby="about-title">
+  <div>
+    <a class="back-link" routerLink="/">
+      <app-icon name="arrow" />
+      Voltar ao início
+    </a>
+    <p class="eyebrow">Quem somos</p>
+    <h1 id="about-title" tabindex="-1">Uma comunidade para aprender, criar e se conectar.</h1>
+    <p>{{ comunidade.descricao }}</p>
+  </div>
+
+  <img
+    src="images/capa-comunidade.jpg"
+    width="1200"
+    height="300"
+    alt="AWS Student Builder Group na Universidade Católica de Brasília"
+  >
+</section>
+
+<section class="team container" aria-labelledby="team-title">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Nosso time</p>
+      <h2 class="section-title" id="team-title">Conheça o Core Team.</h2>
+    </div>
+    <p>As pessoas que organizam, acolhem e ajudam a comunidade a acontecer na UCB.</p>
+  </div>
+
+  <div class="team-grid">
+    @for (membro of equipe; track membro.nome; let primeiro = $first) {
+      <article class="member-card">
+        <img
+          [src]="membro.foto"
+          [alt]="'Retrato de ' + membro.nome"
+          [style.object-position]="membro.posicaoFoto"
+          width="400"
+          height="500"
+          [attr.loading]="primeiro ? 'eager' : 'lazy'"
+          [attr.fetchpriority]="primeiro ? 'high' : null"
+        >
+        <div>
+          <p class="member-role">{{ membro.cargo }}</p>
+          <h3>{{ membro.nome }}</h3>
+
+          @if (membro.descricao) {
+            <details>
+              <summary>Sobre {{ membro.nome }}</summary>
+              <p>{{ membro.descricao }}</p>
+            </details>
+          }
+
+          @if (membro.linkedin || membro.instagram) {
+            <div class="member-links">
+              @if (membro.linkedin) {
+                <a [href]="membro.linkedin" target="_blank" rel="noopener noreferrer">
+                  <app-icon name="linkedin" />
+                  LinkedIn<span class="sr-only"> de {{ membro.nome }}</span>
+                </a>
+              }
+              @if (membro.instagram) {
+                <a [href]="membro.instagram" target="_blank" rel="noopener noreferrer">
+                  <app-icon name="instagram" />
+                  Instagram<span class="sr-only"> de {{ membro.nome }}</span>
+                </a>
+              }
+            </div>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>

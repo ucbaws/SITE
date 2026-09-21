@@ -1,0 +1,67 @@
+@if (introducaoVisivel()) {
+  <div class="intro-screen" aria-hidden="true">
+    <img src="images/LOGO.png" width="136" height="136" alt="">
+    <p>AWS Student Builder Group</p>
+    <span class="intro-place">Universidade Católica de Brasília</span>
+  </div>
+}
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a routerLink="/" class="brand" aria-label="AWS Student Builder Group UCB — início">
+      <img src="images/LOGO.png" width="48" height="48" alt="">
+      <span>AWS Student<small>Builder Group · UCB</small></span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentWhenActive="page">Início</a>
+      <a routerLink="/eventos" routerLinkActive="active" ariaCurrentWhenActive="page">Eventos</a>
+      <a routerLink="/sobre" routerLinkActive="active" ariaCurrentWhenActive="page">Quem somos</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button" type="button" aria-label="Ajustar acessibilidade" (click)="abrirAcessibilidade($any($event.currentTarget))"><span class="accessibility-symbol" aria-hidden="true">Aa</span></button>
+      <button class="icon-button mobile-toggle" type="button" [attr.aria-label]="menuAberto() ? 'Fechar menu' : 'Abrir menu'" [attr.aria-expanded]="menuAberto()" aria-controls="mobile-nav" (click)="menuAberto.set(!menuAberto())"><app-icon [name]="menuAberto() ? 'close' : 'menu'" /></button>
+    </div>
+  </div>
+
+  @if (menuAberto()) {
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Navegação móvel">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Início</a>
+      <a routerLink="/eventos" routerLinkActive="active">Eventos</a>
+      <a routerLink="/sobre" routerLinkActive="active">Quem somos</a>
+      <button type="button" class="mobile-accessibility" (click)="menuAberto.set(false); abrirAcessibilidade($any($event.currentTarget))">Acessibilidade</button>
+    </nav>
+  }
+</header>
+
+<main id="conteudo" tabindex="-1"><router-outlet /></main>
+
+<section class="community-cta">
+  <div class="container cta-inner">
+    <div><p class="eyebrow">Comunidade UCB Cloud Builders</p><h2>Entre para a nossa comunidade.</h2><p>Conecte-se com estudantes interessados em AWS, tecnologia e computação em nuvem.</p></div>
+    <a class="button primary" [href]="comunidade.linkEntrada" target="_blank" rel="noopener noreferrer">Entrar na comunidade <app-icon name="diagonal" /></a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-main">
+    <a class="brand" routerLink="/"><img src="images/LOGO.png" width="46" height="46" alt=""><span>AWS Student<small>Builder Group · UCB</small></span></a>
+    <nav aria-label="Navegação do rodapé"><a routerLink="/eventos">Eventos</a><a routerLink="/sobre">Quem somos</a></nav>
+    <p>Universidade Católica de Brasília<br><span>Brasília, Distrito Federal</span></p>
+  </div>
+  <div class="container footer-bottom">© 2026 AWS Student Builder Group UCB</div>
+</footer>
+
+<dialog #dialogoAcessibilidade class="portal-dialog accessibility-dialog" (click)="fecharAoClicarFora($event, dialogoAcessibilidade)" (close)="restaurarRolagem()" aria-labelledby="accessibility-title">
+  <div class="dialog-top"><p class="eyebrow">Preferências de leitura</p><button type="button" class="icon-button" aria-label="Fechar acessibilidade" (click)="fecharDialogo(dialogoAcessibilidade)"><app-icon name="close" /></button></div>
+  <h2 id="accessibility-title">Acessibilidade</h2>
+  <p class="muted">Ajuste a interface. Suas escolhas ficam salvas neste navegador.</p>
+  <div class="preference-list">
+    <label><span><strong>Texto maior</strong><small>Aumenta textos e controles.</small></span><input type="checkbox" [checked]="preferencias().textoMaior" (change)="definirPreferencia('textoMaior', $any($event.target).checked)"></label>
+    <label><span><strong>Alto contraste</strong><small>Reforça cores e contornos.</small></span><input type="checkbox" [checked]="preferencias().altoContraste" (change)="definirPreferencia('altoContraste', $any($event.target).checked)"></label>
+    <label><span><strong>Reduzir animações</strong><small>Evita movimentos desnecessários.</small></span><input type="checkbox" [checked]="preferencias().reduzirAnimacoes" (change)="definirPreferencia('reduzirAnimacoes', $any($event.target).checked)"></label>
+  </div>
+</dialog>

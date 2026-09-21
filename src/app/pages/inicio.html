@@ -1,0 +1,45 @@
+<section class="hero container">
+  <div class="hero-copy">
+    <p class="eyebrow">AWS Student Builder Group · UCB</p>
+    <h1 tabindex="-1">
+      A nuvem é o começo.<br>
+      <span>A comunidade é o caminho.</span>
+    </h1>
+    <p>
+      Aprenda sobre tecnologia, conheça outros estudantes e transforme ideias em projetos dentro da
+      Universidade Católica de Brasília.
+    </p>
+    <div class="hero-actions">
+      <a class="button primary" routerLink="/eventos">
+        Ver eventos
+        <app-icon name="arrow" />
+      </a>
+      <a class="button secondary" routerLink="/sobre">Conheça o grupo</a>
+    </div>
+  </div>
+</section>
+
+<section class="container team-preview" aria-labelledby="team-preview-title">
+  <div>
+    <p class="eyebrow">Quem faz acontecer</p>
+    <h2 class="section-title" id="team-preview-title">Pessoas reais. Ideias em comum.</h2>
+    <p>Conheça os estudantes que ajudam a construir a comunidade AWS na UCB.</p>
+    <a class="text-link" routerLink="/sobre">
+      Conheça todo o time
+      <app-icon name="arrow" />
+    </a>
+  </div>
+
+  <div class="portrait-row">
+    @for (membro of equipe; track membro.nome) {
+      <img
+        [src]="membro.foto"
+        [alt]="membro.nome"
+        [style.object-position]="membro.posicaoFoto"
+        width="180"
+        height="220"
+        loading="lazy"
+      >
+    }
+  </div>
+</section>

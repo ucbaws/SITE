@@ -40,7 +40,7 @@ export const EQUIPE: MembroEquipe[] = [
     cargo: 'Líder SBG',
     descricao:
       'Líder da comunidade, responsável por definir as estratégias, representar a comunidade perante a AWS e a Universidade Católica de Brasília, coordenar o Core Team e garantir o cumprimento dos objetivos do programa AWS Student Builder Groups.',
-    instagram: 'https://www.instagram.com/sabinograzielly/',
+    instagram: 'https://www.instagram.com/sabinoograzielly',
     linkedin: 'https://www.linkedin.com/in/sabinograzielly/',
     foto: 'images/Grazielly-web.jpg',
     posicaoFoto: 'center 30%',
@@ -80,7 +80,7 @@ export const EQUIPE: MembroEquipe[] = [
     cargo: 'Diretora Técnica',
     descricao:
       'A Diretora Técnica é responsável por fortalecer o lado técnico da comunidade, ajudando na criação de conteúdos, workshops e experiências práticas relacionadas às tecnologias AWS.',
-    linkedin: 'https://www.linkedin.com/in/lorrany-magalhaes-/',
+    linkedin: 'https://www.linkedin.com/in/lorrany-magalh%C3%A3es-/',
     instagram: 'https://www.instagram.com/lorrany_magalhaes/',
     foto: 'images/Lorrany.jpg',
     posicaoFoto: 'center 30%',
@@ -91,7 +91,7 @@ export const EQUIPE: MembroEquipe[] = [
     descricao:
       'O Diretor de Marketing é responsável por divulgar as ações da comunidade e fortalecer a presença da UCB Cloud Builders dentro e fora da universidade.',
     linkedin: 'https://www.linkedin.com/in/lucasmoreirapereira/',
-    instagram: 'https://www.instagram.com/lucasmarpe/',
+    instagram: 'https://www.instagram.com/lucasmorpe/',
     foto: 'images/Lucas-vertical.jpg',
     posicaoFoto: 'center 30%',
   },

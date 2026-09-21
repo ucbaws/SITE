@@ -46,6 +46,9 @@ test('apresenta cargos, descrições e redes sociais atualizadas', async ({ page
   await expect(page.getByText('Diretor de Marketing', { exact: true })).toBeVisible();
   await expect(page.locator('a[href="https://www.linkedin.com/in/lucasmoreirapereira/"]')).toBeVisible();
   await expect(page.locator('a[href="https://www.instagram.com/arthur._vinii/"]')).toBeVisible();
+  await expect(page.locator('a[href="https://www.instagram.com/sabinoograzielly"]')).toBeVisible();
+  await expect(page.locator('a[href="https://www.linkedin.com/in/lorrany-magalh%C3%A3es-/"]')).toBeVisible();
+  await expect(page.locator('a[href="https://www.instagram.com/lucasmorpe/"]')).toBeVisible();
   await expect(page.getByText('Nosso propósito', { exact: true })).toHaveCount(0);
   await expect(page.getByText('Crescer junto faz diferença.', { exact: true })).toHaveCount(0);
 });

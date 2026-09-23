@@ -99,6 +99,24 @@ export const EQUIPE: MembroEquipe[] = [
 
 export const EVENTOS: EventoComunidade[] = [
   {
+    id: 'carreira-cloud-do-zero',
+    titulo: 'Carreira & Cloud do Zero',
+    descricao:
+      'Encontro de abertura do SBG UCB para apresentar caminhos de carreira e os primeiros passos em computação em nuvem.',
+    formato: 'Presencial',
+    categoria: 'Comunidade',
+    data: '2026-09-24',
+    horario: '11:30',
+    local: 'UCB · Bloco M · Sala M002',
+    linkIngresso: 'https://www.meetup.com/aws-sbg-at-catholic-university-of-brasilia/events/316403251/',
+    status: 'aberto',
+    detalhes: [
+      'Conhecer o AWS Student Builder Group da UCB.',
+      'Entender os primeiros passos em carreira e computação em nuvem.',
+      'Participar presencialmente na Sala M002 do Bloco M.',
+    ],
+  },
+  {
     id: 'abertura-sbg',
     titulo: 'Abertura SBG',
     descricao:

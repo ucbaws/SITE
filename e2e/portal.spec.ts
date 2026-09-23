@@ -20,13 +20,25 @@ test('apresenta uma navegação enxuta e abre as páginas principais', async ({ 
   await expect(page).toHaveURL(/\/sobre$/);
 });
 
-test('mostra somente o evento confirmado e oferece ingresso', async ({ page }) => {
+test('mostra os dois eventos confirmados e oferece ingresso', async ({ page }) => {
   await page.goto('/eventos');
+  await expect(page.getByRole('heading', { name: 'Carreira & Cloud do Zero', exact: true })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Abertura SBG', exact: true })).toBeVisible();
-  await expect(page.getByRole('link', { name: /Pegar ingresso/ })).toHaveAttribute('href', /meetup\.com/);
+  await expect(page.getByText('24 de setembro de 2026', { exact: true })).toBeVisible();
+  await expect(page.getByText('UCB · Bloco M · Sala M002', { exact: true })).toBeVisible();
+  const ingressos = page.getByRole('link', { name: /Pegar ingresso/ });
+  await expect(ingressos).toHaveCount(2);
+  await expect(ingressos.nth(0)).toHaveAttribute(
+    'href',
+    'https://www.meetup.com/aws-sbg-at-catholic-university-of-brasilia/events/316403251/',
+  );
+  await expect(ingressos.nth(1)).toHaveAttribute(
+    'href',
+    'https://www.meetup.com/aws-sbg-at-catholic-university-of-brasilia/events/316403251/',
+  );
   await expect(page.getByRole('heading', { name: 'Builders compartilhando ideias', exact: true })).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Conheça a comunidade', exact: true })).toHaveCount(0);
-  await page.getByRole('button', { name: 'Ver detalhes', exact: true }).click();
+  await page.getByRole('button', { name: 'Ver detalhes', exact: true }).first().click();
   await expect(page.getByText('O que você encontrará')).toBeVisible();
 });
 

@@ -18,6 +18,7 @@
     <nav class="desktop-nav" aria-label="Navegação principal">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ariaCurrentWhenActive="page">Início</a>
       <a routerLink="/eventos" routerLinkActive="active" ariaCurrentWhenActive="page">Eventos</a>
+      <a routerLink="/fotos" routerLinkActive="active" ariaCurrentWhenActive="page">Fotos</a>
       <a routerLink="/sobre" routerLinkActive="active" ariaCurrentWhenActive="page">Quem somos</a>
     </nav>
 
@@ -31,6 +32,7 @@
     <nav id="mobile-nav" class="mobile-nav" aria-label="Navegação móvel">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Início</a>
       <a routerLink="/eventos" routerLinkActive="active">Eventos</a>
+      <a routerLink="/fotos" routerLinkActive="active">Fotos</a>
       <a routerLink="/sobre" routerLinkActive="active">Quem somos</a>
       <button type="button" class="mobile-accessibility" (click)="menuAberto.set(false); abrirAcessibilidade($any($event.currentTarget))">Acessibilidade</button>
     </nav>
@@ -49,7 +51,7 @@
 <footer class="site-footer">
   <div class="container footer-main">
     <a class="brand" routerLink="/"><img src="images/LOGO.png" width="46" height="46" alt=""><span>AWS Student<small>Builder Group · UCB</small></span></a>
-    <nav aria-label="Navegação do rodapé"><a routerLink="/eventos">Eventos</a><a routerLink="/sobre">Quem somos</a></nav>
+    <nav aria-label="Navegação do rodapé"><a routerLink="/eventos">Eventos</a><a routerLink="/fotos">Fotos</a><a routerLink="/sobre">Quem somos</a><a [href]="comunidade.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn da comunidade <app-icon name="diagonal" /></a></nav>
     <p>Universidade Católica de Brasília<br><span>Brasília, Distrito Federal</span></p>
   </div>
   <div class="container footer-bottom">© 2026 AWS Student Builder Group UCB</div>

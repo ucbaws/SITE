@@ -136,6 +136,12 @@
   color: var(--blue);
 }
 
+.footer-main nav a app-icon {
+  width: 14px;
+  height: 14px;
+  margin-left: 3px;
+}
+
 .footer-main > p {
   color: var(--gray-200);
   line-height: 1.7;

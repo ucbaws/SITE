@@ -49,7 +49,7 @@
             </details>
           }
 
-          @if (membro.linkedin || membro.instagram) {
+          @if (membro.linkedin || membro.instagram || membro.github) {
             <div class="member-links">
               @if (membro.linkedin) {
                 <a [href]="membro.linkedin" target="_blank" rel="noopener noreferrer">
@@ -61,6 +61,12 @@
                 <a [href]="membro.instagram" target="_blank" rel="noopener noreferrer">
                   <app-icon name="instagram" />
                   Instagram<span class="sr-only"> de {{ membro.nome }}</span>
+                </a>
+              }
+              @if (membro.github) {
+                <a [href]="membro.github" target="_blank" rel="noopener noreferrer">
+                  <app-icon name="github" />
+                  GitHub<span class="sr-only"> de {{ membro.nome }}</span>
                 </a>
               }
             </div>

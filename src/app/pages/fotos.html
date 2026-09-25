@@ -1,0 +1,31 @@
+<section class="photos-hero container" aria-labelledby="photos-title">
+  <a class="back-link" routerLink="/"><app-icon name="arrow" /> Voltar ao início</a>
+  <p class="eyebrow">Memórias da comunidade</p>
+  <h1 id="photos-title" tabindex="-1">Fotos dos nossos encontros.</h1>
+  <p>Relembre os eventos do AWS Student Builder Group UCB. Cada álbum abre uma pasta de fotos no Google Drive.</p>
+</section>
+
+<section class="photos-content container" aria-labelledby="albums-title">
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Galeria</p>
+      <h2 class="section-title" id="albums-title">Explore os álbuns.</h2>
+    </div>
+  </div>
+
+  <div class="album-grid">
+    @for (album of albuns; track album.link; let indice = $index) {
+      <article class="album-card">
+        <span class="album-index">{{ (indice + 1).toString().padStart(2, '0') }} / {{ albuns.length.toString().padStart(2, '0') }}</span>
+        <div>
+          <p class="eyebrow">Álbum de fotos</p>
+          <h3>{{ album.titulo }}</h3>
+          <p>{{ album.descricao }}</p>
+        </div>
+        <a class="button secondary" [href]="album.link" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'Abrir fotos de ' + album.titulo + ' no Google Drive'">
+          Abrir no Google Drive <app-icon name="diagonal" />
+        </a>
+      </article>
+    }
+  </div>
+</section>

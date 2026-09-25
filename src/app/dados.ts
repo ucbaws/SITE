@@ -4,6 +4,7 @@ export interface MembroEquipe {
   descricao?: string;
   instagram?: string;
   linkedin?: string;
+  github?: string;
   foto: string;
   posicaoFoto: string;
 }
@@ -30,7 +31,7 @@ export const COMUNIDADE = {
   descricao:
     'Somos um grupo oficial da AWS na UCB. Uma comunidade para estudantes interessados em computação em nuvem, unindo aprendizado, experiência e networking.',
   instagram: 'https://www.instagram.com/ucb.sbg/',
-  linkedin: 'https://www.linkedin.com/company/aws-student-builder-group-ucb',
+  linkedin: 'https://www.linkedin.com/company/aws-student-builder-group-ucb/',
   linkEntrada: 'https://www.meetup.com/aws-sbg-at-catholic-university-of-brasilia/',
 } as const;
 
@@ -42,6 +43,7 @@ export const EQUIPE: MembroEquipe[] = [
       'Líder da comunidade, responsável por definir as estratégias, representar a comunidade perante a AWS e a Universidade Católica de Brasília, coordenar o Core Team e garantir o cumprimento dos objetivos do programa AWS Student Builder Groups.',
     instagram: 'https://www.instagram.com/sabinoograzielly',
     linkedin: 'https://www.linkedin.com/in/sabinograzielly/',
+    github: 'https://github.com/sabinograzielly',
     foto: 'images/Grazielly-web.jpg',
     posicaoFoto: 'center 30%',
   },
@@ -52,6 +54,7 @@ export const EQUIPE: MembroEquipe[] = [
       'O Diretor de Comunidade é responsável por aproximar pessoas, fortalecer o relacionamento entre os membros e criar um ambiente acolhedor, colaborativo e engajado.',
     instagram: 'https://www.instagram.com/mickeiascharles/',
     linkedin: 'https://www.linkedin.com/in/mickeiascharles/',
+    github: 'https://github.com/mickeiascharles',
     foto: 'images/Mickeias.jpg',
     posicaoFoto: 'center 34%',
   },
@@ -71,6 +74,7 @@ export const EQUIPE: MembroEquipe[] = [
     descricao:
       'O Diretor de Eventos é responsável por transformar ideias em experiências memoráveis para a comunidade. Atua no planejamento e coordenação dos eventos, garantindo que cada atividade seja organizada, relevante e bem executada.',
     linkedin: 'https://www.linkedin.com/in/juliocesarlisboa/',
+    github: 'https://github.com/JulioLisboa',
     instagram: 'https://www.instagram.com/juliollisboa/',
     foto: 'images/Julio.jpg',
     posicaoFoto: 'center 28%',
@@ -96,6 +100,24 @@ export const EQUIPE: MembroEquipe[] = [
     posicaoFoto: 'center 30%',
   },
 ];
+
+export const ALBUNS = [
+  {
+    titulo: 'Encontro de 24 de setembro',
+    descricao: 'Registros do encontro Carreira & Cloud do Zero.',
+    link: 'https://drive.google.com/drive/folders/1h6gxwq4cHBddIE_AiwifVg4TdlO2YQua?usp=drive_link',
+  },
+  {
+    titulo: 'Encontro de 30 de setembro',
+    descricao: 'Fotos da abertura do AWS Student Builder Group na UCB.',
+    link: 'https://drive.google.com/drive/folders/1uzW1E_YRUWOqYhVtvSGDg0fmUfMLS8TG?usp=drive_link',
+  },
+  {
+    titulo: 'Universo Católica',
+    descricao: 'Momentos da comunidade no Universo Católica.',
+    link: 'https://drive.google.com/drive/folders/1Y6QaIkAU36UFhb0TK_xWjaQKmiVzZmf9?usp=drive_link',
+  },
+] as const;
 
 export const EVENTOS: EventoComunidade[] = [
   {

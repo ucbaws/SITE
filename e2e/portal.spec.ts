@@ -16,6 +16,8 @@ test('apresenta uma navegação enxuta e abre as páginas principais', async ({ 
   await expect(page.getByRole('button', { name: 'Faça parte', exact: true })).toHaveCount(0);
   await page.getByRole('link', { name: 'Eventos', exact: true }).first().click();
   await expect(page).toHaveURL(/\/eventos$/);
+  await page.getByRole('link', { name: 'Fotos', exact: true }).first().click();
+  await expect(page).toHaveURL(/\/fotos$/);
   await page.getByRole('link', { name: 'Quem somos', exact: true }).first().click();
   await expect(page).toHaveURL(/\/sobre$/);
 });
@@ -45,6 +47,20 @@ test('mostra os dois eventos confirmados e oferece ingresso', async ({ page }) =
 test('oferece um link oficial para entrar na comunidade', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('link', { name: /Entrar na comunidade/ })).toHaveAttribute('href', 'https://www.meetup.com/aws-sbg-at-catholic-university-of-brasilia/');
+  await expect(page.getByRole('link', { name: /LinkedIn da comunidade/ })).toHaveAttribute('href', 'https://www.linkedin.com/company/aws-student-builder-group-ucb/');
+});
+
+test('abre os três álbuns públicos no Google Drive', async ({ page }) => {
+  await page.goto('/fotos');
+  const albuns = [
+    ['Encontro de 24 de setembro', 'https://drive.google.com/drive/folders/1h6gxwq4cHBddIE_AiwifVg4TdlO2YQua?usp=drive_link'],
+    ['Encontro de 30 de setembro', 'https://drive.google.com/drive/folders/1uzW1E_YRUWOqYhVtvSGDg0fmUfMLS8TG?usp=drive_link'],
+    ['Universo Católica', 'https://drive.google.com/drive/folders/1Y6QaIkAU36UFhb0TK_xWjaQKmiVzZmf9?usp=drive_link'],
+  ];
+  for (const [titulo, link] of albuns) {
+    const album = page.getByRole('article').filter({ has: page.getByRole('heading', { name: titulo }) });
+    await expect(album.getByRole('link', { name: /Abrir fotos de/ })).toHaveAttribute('href', link);
+  }
 });
 
 test('apresenta cargos, descrições e redes sociais atualizadas', async ({ page }) => {
@@ -61,6 +77,10 @@ test('apresenta cargos, descrições e redes sociais atualizadas', async ({ page
   await expect(page.locator('a[href="https://www.instagram.com/sabinoograzielly"]')).toBeVisible();
   await expect(page.locator('a[href="https://www.linkedin.com/in/lorrany-magalh%C3%A3es-/"]')).toBeVisible();
   await expect(page.locator('a[href="https://www.instagram.com/lucasmorpe/"]')).toBeVisible();
+  for (const github of ['sabinograzielly', 'mickeiascharles', 'JulioLisboa']) {
+    await expect(page.locator(`a[href="https://github.com/${github}"]`)).toBeVisible();
+  }
+  await expect(page.getByRole('link', { name: /GitHub de/ })).toHaveCount(3);
   await expect(page.getByText('Nosso propósito', { exact: true })).toHaveCount(0);
   await expect(page.getByText('Crescer junto faz diferença.', { exact: true })).toHaveCount(0);
 });
@@ -106,7 +126,7 @@ test('menu e páginas cabem na tela de 390px', async ({ page }, testInfo) => {
   await page.getByRole('link', { name: 'Quem somos', exact: true }).first().click();
   await expect(page).toHaveURL(/\/sobre$/);
   await expectNoHorizontalOverflow(page);
-  for (const route of ['/', '/eventos', '/sobre']) {
+  for (const route of ['/', '/eventos', '/fotos', '/sobre']) {
     await page.goto(route);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
     await expectNoHorizontalOverflow(page);

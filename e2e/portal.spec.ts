@@ -22,19 +22,14 @@ test('apresenta uma navegação enxuta e abre as páginas principais', async ({ 
   await expect(page).toHaveURL(/\/sobre$/);
 });
 
-test('mostra os dois eventos confirmados e oferece ingresso', async ({ page }) => {
+test('mostra somente o evento atual e oferece ingresso', async ({ page }) => {
   await page.goto('/eventos');
-  await expect(page.getByRole('heading', { name: 'Carreira & Cloud do Zero', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Carreira & Cloud do Zero', exact: true })).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Abertura SBG', exact: true })).toBeVisible();
-  await expect(page.getByText('24 de setembro de 2026', { exact: true })).toBeVisible();
-  await expect(page.getByText('UCB · Bloco M · Sala M002', { exact: true })).toBeVisible();
+  await expect(page.getByText('24 de setembro de 2026', { exact: true })).toHaveCount(0);
   const ingressos = page.getByRole('link', { name: /Pegar ingresso/ });
-  await expect(ingressos).toHaveCount(2);
+  await expect(ingressos).toHaveCount(1);
   await expect(ingressos.nth(0)).toHaveAttribute(
-    'href',
-    'https://www.meetup.com/aws-sbg-at-catholic-university-of-brasilia/events/316403251/',
-  );
-  await expect(ingressos.nth(1)).toHaveAttribute(
     'href',
     'https://www.meetup.com/aws-sbg-at-catholic-university-of-brasilia/events/316403251/',
   );
@@ -77,10 +72,17 @@ test('apresenta cargos, descrições e redes sociais atualizadas', async ({ page
   await expect(page.locator('a[href="https://www.instagram.com/sabinoograzielly"]')).toBeVisible();
   await expect(page.locator('a[href="https://www.linkedin.com/in/lorrany-magalh%C3%A3es-/"]')).toBeVisible();
   await expect(page.locator('a[href="https://www.instagram.com/lucasmorpe/"]')).toBeVisible();
-  for (const github of ['sabinograzielly', 'mickeiascharles', 'JulioLisboa']) {
+  for (const github of [
+    'sabinograzielly',
+    'mickeiascharles',
+    'arthurbraga06',
+    'JulioLisboa',
+    'lorranym',
+    'lucas0mp',
+  ]) {
     await expect(page.locator(`a[href="https://github.com/${github}"]`)).toBeVisible();
   }
-  await expect(page.getByRole('link', { name: /GitHub de/ })).toHaveCount(3);
+  await expect(page.getByRole('link', { name: /GitHub de/ })).toHaveCount(6);
   await expect(page.getByText('Nosso propósito', { exact: true })).toHaveCount(0);
   await expect(page.getByText('Crescer junto faz diferença.', { exact: true })).toHaveCount(0);
 });

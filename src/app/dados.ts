@@ -65,6 +65,7 @@ export const EQUIPE: MembroEquipe[] = [
       'Atua como peça-chave na coordenação de equipes e processos, estimulando o engajamento, a organização e a produtividade nas entregas.',
     linkedin: 'https://www.linkedin.com/in/arthurvbraga/',
     instagram: 'https://www.instagram.com/arthur._vinii/',
+    github: 'https://github.com/arthurbraga06',
     foto: 'images/Arthur.jpg',
     posicaoFoto: 'center 32%',
   },
@@ -86,6 +87,7 @@ export const EQUIPE: MembroEquipe[] = [
       'A Diretora Técnica é responsável por fortalecer o lado técnico da comunidade, ajudando na criação de conteúdos, workshops e experiências práticas relacionadas às tecnologias AWS.',
     linkedin: 'https://www.linkedin.com/in/lorrany-magalh%C3%A3es-/',
     instagram: 'https://www.instagram.com/lorrany_magalhaes/',
+    github: 'https://github.com/lorranym',
     foto: 'images/Lorrany.jpg',
     posicaoFoto: 'center 30%',
   },
@@ -96,6 +98,7 @@ export const EQUIPE: MembroEquipe[] = [
       'O Diretor de Marketing é responsável por divulgar as ações da comunidade e fortalecer a presença da UCB Cloud Builders dentro e fora da universidade.',
     linkedin: 'https://www.linkedin.com/in/lucasmoreirapereira/',
     instagram: 'https://www.instagram.com/lucasmorpe/',
+    github: 'https://github.com/lucas0mp',
     foto: 'images/Lucas-vertical.jpg',
     posicaoFoto: 'center 30%',
   },
@@ -120,24 +123,6 @@ export const ALBUNS = [
 ] as const;
 
 export const EVENTOS: EventoComunidade[] = [
-  {
-    id: 'carreira-cloud-do-zero',
-    titulo: 'Carreira & Cloud do Zero',
-    descricao:
-      'Encontro de abertura do SBG UCB para apresentar caminhos de carreira e os primeiros passos em computação em nuvem.',
-    formato: 'Presencial',
-    categoria: 'Comunidade',
-    data: '2026-09-24',
-    horario: '11:30',
-    local: 'UCB · Bloco M · Sala M002',
-    linkIngresso: 'https://www.meetup.com/aws-sbg-at-catholic-university-of-brasilia/events/316403251/',
-    status: 'aberto',
-    detalhes: [
-      'Conhecer o AWS Student Builder Group da UCB.',
-      'Entender os primeiros passos em carreira e computação em nuvem.',
-      'Participar presencialmente na Sala M002 do Bloco M.',
-    ],
-  },
   {
     id: 'abertura-sbg',
     titulo: 'Abertura SBG',

@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const portaDosTestes = Number(process.env['PORTA_DOS_TESTES'] ?? 4307);
+const enderecoDosTestes = `http://127.0.0.1:${portaDosTestes}`;
+
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
@@ -8,7 +11,7 @@ export default defineConfig({
   workers: 2,
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {
-    baseURL: 'http://127.0.0.1:4200',
+    baseURL: enderecoDosTestes,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
   },
@@ -19,9 +22,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm start -- --port 4200',
-    url: 'http://127.0.0.1:4200',
-    reuseExistingServer: true,
+    command: `npm start -- --port ${portaDosTestes}`,
+    url: enderecoDosTestes,
+    reuseExistingServer: false,
     timeout: 120_000,
   },
 });

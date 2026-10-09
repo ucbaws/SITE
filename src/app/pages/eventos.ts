@@ -24,6 +24,7 @@ export class PaginaEventos {
   }
 
   formatarData(evento: EventoComunidade): string {
+    if (!evento.data) return '';
     return new Intl.DateTimeFormat('pt-BR', {
       day: '2-digit',
       month: 'long',

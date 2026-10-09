@@ -15,7 +15,7 @@
   <div class="agenda-head">
     <div>
       <p class="eyebrow">Agenda</p>
-      <h2 class="section-title" id="agenda-title">Próximo encontro.</h2>
+      <h2 class="section-title" id="agenda-title">Próximos eventos.</h2>
     </div>
   </div>
   <p class="agenda-note">
@@ -35,8 +35,14 @@
           <h3>{{ evento.titulo }}</h3>
           <p>{{ evento.descricao }}</p>
           <div class="event-meta">
-            <span><app-icon name="calendar" /> {{ formatarData(evento) }}</span>
-            <span><app-icon name="clock" /> {{ evento.horario }}</span>
+            @if (evento.data) {
+              <span><app-icon name="calendar" /> {{ formatarData(evento) }}</span>
+            } @else if (evento.periodo) {
+              <span><app-icon name="calendar" /> {{ evento.periodo }}</span>
+            }
+            @if (evento.horario) {
+              <span><app-icon name="clock" /> {{ evento.horario }}</span>
+            }
             <span><app-icon name="pin" /> {{ evento.local }}</span>
           </div>
         </div>
@@ -50,7 +56,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              Pegar ingresso
+              {{ evento.textoBotao ?? 'Pegar ingresso' }}
               <app-icon name="diagonal" />
             </a>
           }

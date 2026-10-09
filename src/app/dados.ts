@@ -13,12 +13,15 @@ export interface EventoComunidade {
   id: string;
   titulo: string;
   descricao: string;
-  formato: 'Presencial' | 'Online';
-  categoria: 'Workshop' | 'Meetup' | 'Comunidade';
-  data: string;
-  horario: string;
+  formato: 'Presencial' | 'Online' | 'Presencial e on-line';
+  categoria: 'Workshop' | 'Meetup' | 'Comunidade' | 'Trilha';
+  /** Data no formato AAAA-MM-DD. Omita em programas contínuos e use `periodo`. */
+  data?: string;
+  horario?: string;
+  periodo?: string;
   local: string;
   linkIngresso: string;
+  textoBotao?: string;
   status: 'aberto' | 'encerrado';
   detalhes: string[];
 }
@@ -124,21 +127,23 @@ export const ALBUNS = [
 
 export const EVENTOS: EventoComunidade[] = [
   {
-    id: 'abertura-sbg',
-    titulo: 'Abertura SBG',
+    id: 'trilha-cloud-practitioner',
+    titulo: 'Trilha de Certificação AWS Certified Cloud Practitioner',
     descricao:
-      'Evento de abertura do AWS Student Builder Group na UCB para quem quer conhecer a comunidade e começar sua jornada em computação em nuvem.',
-    formato: 'Presencial',
-    categoria: 'Comunidade',
-    data: '2026-09-30',
-    horario: '19:00',
-    local: 'UCB · Bloco K · Auditório K',
-    linkIngresso: 'https://www.meetup.com/aws-sbg-at-catholic-university-of-brasilia/events/316403251/',
+      'Serão 3 meses de preparação intensiva, com muito aprendizado, troca de experiências e estudo em grupo para dominar os fundamentos da computação em nuvem da AWS e dar o primeiro passo rumo à certificação.',
+    formato: 'Presencial e on-line',
+    categoria: 'Trilha',
+    periodo: '3 meses de preparação',
+    local: 'UCB e on-line',
+    linkIngresso:
+      'https://forms.cloud.microsoft/pages/responsepage.aspx?id=rt8JIBHfx0mATf2o1c2YZbXwPPoO7t9Gj6S7pGf2cOJUM1E1UktTRkwxSFlBQ09WOEZEUkI4WVRYUy4u&route=shorturl',
+    textoBotao: 'Fazer inscrição',
     status: 'aberto',
     detalhes: [
-      'Conhecer o AWS Student Builder Group da UCB.',
-      'Entender caminhos para começar em computação em nuvem.',
-      'Conectar-se com estudantes e participar das próximas atividades.',
+      'Oportunidade de conquistar a certificação oficial sem custos.',
+      'Acesso aos materiais do AWS Academy para apoiar os estudos.',
+      'Encontros presenciais e on-line para compartilhar conhecimentos, esclarecer dúvidas e evoluir juntos.',
+      'Aprendizado colaborativo com foco na preparação para a prova de certificação.',
     ],
   },
 ];

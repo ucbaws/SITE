@@ -25,14 +25,15 @@ test('apresenta uma navegação enxuta e abre as páginas principais', async ({ 
 test('mostra somente o evento atual e oferece ingresso', async ({ page }) => {
   await page.goto('/eventos');
   await expect(page.getByRole('heading', { name: 'Carreira & Cloud do Zero', exact: true })).toHaveCount(0);
-  await expect(page.getByRole('heading', { name: 'Abertura SBG', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Próximos eventos.', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Abertura SBG', exact: true })).toHaveCount(0);
+  await expect(
+    page.getByRole('heading', { name: 'Trilha de Certificação AWS Certified Cloud Practitioner', exact: true }),
+  ).toBeVisible();
   await expect(page.getByText('24 de setembro de 2026', { exact: true })).toHaveCount(0);
-  const ingressos = page.getByRole('link', { name: /Pegar ingresso/ });
-  await expect(ingressos).toHaveCount(1);
-  await expect(ingressos.nth(0)).toHaveAttribute(
-    'href',
-    'https://www.meetup.com/aws-sbg-at-catholic-university-of-brasilia/events/316403251/',
-  );
+  const inscricoes = page.getByRole('link', { name: /Fazer inscrição/ });
+  await expect(inscricoes).toHaveCount(1);
+  await expect(inscricoes.nth(0)).toHaveAttribute('href', /forms\.cloud\.microsoft/);
   await expect(page.getByRole('heading', { name: 'Builders compartilhando ideias', exact: true })).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Conheça a comunidade', exact: true })).toHaveCount(0);
   await page.getByRole('button', { name: 'Ver detalhes', exact: true }).first().click();

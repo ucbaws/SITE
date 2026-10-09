@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
-import { EVENTOS, EventoComunidade } from '../dados';
+import { COMUNIDADE, EVENTOS, EventoComunidade } from '../dados';
 import { Icone } from '../icone';
 
 @Component({
@@ -13,6 +13,7 @@ import { Icone } from '../icone';
 })
 export class PaginaEventos {
   readonly eventos = EVENTOS;
+  readonly instagram = COMUNIDADE.instagram;
   readonly eventoExpandido = signal<string | null>(null);
 
   constructor() {

@@ -1,0 +1,22 @@
+{
+  "eventos": [
+    {
+      "id": "trilha-cloud-practitioner",
+      "titulo": "Trilha de Certificação AWS Certified Cloud Practitioner",
+      "descricao": "Serão 3 meses de preparação intensiva, com muito aprendizado, troca de experiências e estudo em grupo para dominar os fundamentos da computação em nuvem da AWS e dar o primeiro passo rumo à certificação.",
+      "formato": "Presencial e on-line",
+      "categoria": "Trilha",
+      "periodo": "3 meses de preparação",
+      "local": "UCB e on-line",
+      "linkIngresso": "https://forms.cloud.microsoft/pages/responsepage.aspx?id=rt8JIBHfx0mATf2o1c2YZbXwPPoO7t9Gj6S7pGf2cOJUM1E1UktTRkwxSFlBQ09WOEZEUkI4WVRYUy4u&route=shorturl",
+      "textoBotao": "Fazer inscrição",
+      "status": "aberto",
+      "detalhes": [
+        "Oportunidade de conquistar a certificação oficial sem custos.",
+        "Acesso aos materiais do AWS Academy para apoiar os estudos.",
+        "Encontros presenciais e on-line para compartilhar conhecimentos, esclarecer dúvidas e evoluir juntos.",
+        "Aprendizado colaborativo com foco na preparação para a prova de certificação."
+      ]
+    }
+  ]
+}

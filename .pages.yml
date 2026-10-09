@@ -1,0 +1,239 @@
+# Configuração do Pages CMS (https://pagescms.org/docs/)
+# Editor visual em https://app.pagescms.org — guia para o Core Team em docs/GUIA-EDICAO.md
+
+media:
+  input: public/images
+  output: images
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: eventos
+    label: Eventos
+    description: Eventos, workshops e trilhas que aparecem na página "Eventos" do portal.
+    type: file
+    path: src/conteudo/eventos.json
+    format: json
+    fields:
+      - name: eventos
+        label: Lista de eventos
+        description: Cada item é um evento. Para tirar um evento das inscrições sem apagá-lo, mude a situação para "Encerrado".
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{titulo} ({status})"
+        fields:
+          - name: id
+            label: Identificador
+            description: "Nome curto e único do evento, em letras minúsculas e sem espaços, ex.: trilha-cloud-2026"
+            type: string
+            required: true
+            pattern:
+              regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+              message: "Use só letras minúsculas, números e hífens, sem espaços. Ex.: trilha-cloud-2026"
+          - name: titulo
+            label: Título
+            description: Nome do evento como aparece no card.
+            type: string
+            required: true
+          - name: descricao
+            label: Descrição
+            description: Um ou dois parágrafos explicando o evento.
+            type: text
+            required: true
+          - name: formato
+            label: Formato
+            description: Como as pessoas vão participar.
+            type: select
+            required: true
+            options:
+              values: [Presencial, Online, Presencial e on-line]
+          - name: categoria
+            label: Categoria
+            description: Tipo de atividade.
+            type: select
+            required: true
+            options:
+              values: [Workshop, Meetup, Comunidade, Trilha]
+          - name: data
+            label: Data
+            description: Dia do evento. Deixe em branco em programas contínuos (como trilhas) e preencha o campo "Período".
+            type: date
+            default: ""
+            options:
+              format: yyyy-MM-dd
+          - name: horario
+            label: Horário
+            description: "Opcional. Ex.: 19h às 21h"
+            type: string
+          - name: periodo
+            label: Período
+            description: "Use no lugar da data em programas contínuos. Ex.: 3 meses de preparação"
+            type: string
+          - name: local
+            label: Local
+            description: "Onde acontece. Ex.: UCB, Bloco M, Auditório 2 — ou On-line"
+            type: string
+            required: true
+          - name: linkIngresso
+            label: Link de inscrição
+            description: Endereço completo (começando com https://) do formulário, Meetup ou Sympla.
+            type: string
+            required: true
+            pattern:
+              regex: "^https?://"
+              message: "O link precisa começar com https://"
+          - name: textoBotao
+            label: Texto do botão
+            description: "Opcional. Texto do botão de inscrição. Ex.: Fazer inscrição"
+            type: string
+          - name: status
+            label: Situação
+            description: '"Aberto" mostra o botão de inscrição; "Encerrado" mantém o evento no histórico sem inscrições.'
+            type: select
+            required: true
+            options:
+              values:
+                - name: aberto
+                  label: Aberto
+                - name: encerrado
+                  label: Encerrado
+          - name: detalhes
+            label: Destaques
+            description: Pontos importantes do evento, um por item (aparecem como lista no card).
+            type: string
+            list: true
+
+  - name: albuns
+    label: Álbuns de fotos (Google Drive)
+    description: Links para pastas de fotos no Google Drive. A pasta precisa estar compartilhada como "Qualquer pessoa com o link".
+    type: file
+    path: src/conteudo/albuns.json
+    format: json
+    fields:
+      - name: albuns
+        label: Lista de álbuns
+        description: Cada item é uma pasta do Google Drive.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{titulo}"
+        fields:
+          - name: titulo
+            label: Título
+            description: "Ex.: Encontro de 24 de setembro"
+            type: string
+            required: true
+          - name: descricao
+            label: Descrição
+            description: Uma frase curta sobre as fotos.
+            type: string
+            required: true
+          - name: link
+            label: Link da pasta no Drive
+            description: Cole o link de compartilhamento da pasta (começa com https://drive.google.com/).
+            type: string
+            required: true
+            pattern:
+              regex: "^https://drive\\.google\\.com/"
+              message: "Cole um link do Google Drive (https://drive.google.com/...)"
+
+  - name: equipe
+    label: Core Team
+    description: Pessoas do Core Team mostradas na página "Quem somos".
+    type: file
+    path: src/conteudo/equipe.json
+    format: json
+    fields:
+      - name: equipe
+        label: Membros
+        description: Cada item é uma pessoa. A ordem da lista é a ordem no site.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nome} — {cargo}"
+        fields:
+          - name: nome
+            label: Nome
+            type: string
+            required: true
+          - name: cargo
+            label: Cargo
+            description: "Ex.: Diretora Técnica"
+            type: string
+            required: true
+          - name: descricao
+            label: Descrição
+            description: Opcional. Uma ou duas frases sobre o papel da pessoa.
+            type: text
+          - name: foto
+            label: Foto
+            description: Foto vertical ou quadrada, de preferência JPG com até 500 KB.
+            type: image
+            required: true
+          - name: posicaoFoto
+            label: Enquadramento da foto
+            description: 'Qual parte da foto fica visível no recorte. Use "center 30%" e diminua o número para mostrar mais o topo (rosto mais baixo) ou aumente para mostrar mais embaixo.'
+            type: string
+            required: true
+            default: center 30%
+          - name: instagram
+            label: Instagram
+            description: Opcional. Link completo do perfil (https://www.instagram.com/...).
+            type: string
+          - name: linkedin
+            label: LinkedIn
+            description: Opcional. Link completo do perfil (https://www.linkedin.com/in/...).
+            type: string
+          - name: github
+            label: GitHub
+            description: Opcional. Link completo do perfil (https://github.com/...).
+            type: string
+
+  - name: comunidade
+    label: Informações da comunidade
+    description: Nome, descrição e links oficiais usados em todo o portal.
+    type: file
+    path: src/conteudo/comunidade.json
+    format: json
+    fields:
+      - name: nome
+        label: Nome completo
+        type: string
+        required: true
+      - name: nomeCurto
+        label: Nome curto
+        description: Versão reduzida do nome, usada no cabeçalho e em espaços pequenos.
+        type: string
+        required: true
+      - name: universidade
+        label: Universidade
+        type: string
+        required: true
+      - name: cidade
+        label: Cidade
+        description: "Ex.: Brasília, DF"
+        type: string
+        required: true
+      - name: descricao
+        label: Descrição
+        description: Texto de apresentação da comunidade.
+        type: text
+        required: true
+      - name: instagram
+        label: Instagram
+        description: Link completo do perfil da comunidade.
+        type: string
+        required: true
+      - name: linkedin
+        label: LinkedIn
+        description: Link completo da página da comunidade.
+        type: string
+        required: true
+      - name: linkEntrada
+        label: Link para participar
+        description: Para onde vai o botão "Entrar na comunidade" (hoje, a página do Meetup).
+        type: string
+        required: true

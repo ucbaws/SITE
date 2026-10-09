@@ -18,9 +18,15 @@
       <h2 class="section-title" id="agenda-title">Próximos eventos.</h2>
     </div>
   </div>
-  <p class="agenda-note">
-    Eventos confirmados exibem o botão de ingresso com acesso direto à página oficial.
-  </p>
+  @if (eventos.length) {
+    <p class="agenda-note">
+      Eventos confirmados exibem o botão de ingresso com acesso direto à página oficial.
+    </p>
+  } @else {
+    <p class="agenda-note">
+      Novos eventos em breve. Acompanhe nosso <a [href]="instagram" target="_blank" rel="noopener noreferrer">Instagram</a>.
+    </p>
+  }
 
   <div class="event-list">
     @for (evento of eventos; track evento.id) {
@@ -56,22 +62,24 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              {{ evento.textoBotao ?? 'Pegar ingresso' }}
+              {{ evento.textoBotao || 'Pegar ingresso' }}
               <app-icon name="diagonal" />
             </a>
           }
-          <button
-            class="proposal-toggle"
-            type="button"
-            [attr.aria-expanded]="eventoExpandido() === evento.id"
-            [attr.aria-controls]="'detalhes-' + evento.id"
-            (click)="alternarDetalhes(evento.id)"
-          >
-            {{ eventoExpandido() === evento.id ? 'Fechar detalhes' : 'Ver detalhes' }}
-          </button>
+          @if (evento.detalhes.length) {
+            <button
+              class="proposal-toggle"
+              type="button"
+              [attr.aria-expanded]="eventoExpandido() === evento.id"
+              [attr.aria-controls]="'detalhes-' + evento.id"
+              (click)="alternarDetalhes(evento.id)"
+            >
+              {{ eventoExpandido() === evento.id ? 'Fechar detalhes' : 'Ver detalhes' }}
+            </button>
+          }
         </div>
 
-        @if (eventoExpandido() === evento.id) {
+        @if (evento.detalhes.length && eventoExpandido() === evento.id) {
           <div class="proposal" [id]="'detalhes-' + evento.id">
             <h4>O que você encontrará</h4>
             <ul>

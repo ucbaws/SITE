@@ -22,22 +22,17 @@ test('apresenta uma navegação enxuta e abre as páginas principais', async ({ 
   await expect(page).toHaveURL(/\/sobre$/);
 });
 
-test('mostra somente o evento atual e oferece ingresso', async ({ page }) => {
+test('mostra a agenda vazia e aponta para o Instagram', async ({ page }) => {
   await page.goto('/eventos');
-  await expect(page.getByRole('heading', { name: 'Carreira & Cloud do Zero', exact: true })).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Próximos eventos.', exact: true })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Abertura SBG', exact: true })).toHaveCount(0);
-  await expect(
-    page.getByRole('heading', { name: 'Trilha de Certificação AWS Certified Cloud Practitioner', exact: true }),
-  ).toBeVisible();
-  await expect(page.getByText('24 de setembro de 2026', { exact: true })).toHaveCount(0);
-  const inscricoes = page.getByRole('link', { name: /Fazer inscrição/ });
-  await expect(inscricoes).toHaveCount(1);
-  await expect(inscricoes.nth(0)).toHaveAttribute('href', /forms\.cloud\.microsoft/);
-  await expect(page.getByRole('heading', { name: 'Builders compartilhando ideias', exact: true })).toHaveCount(0);
-  await expect(page.getByRole('heading', { name: 'Conheça a comunidade', exact: true })).toHaveCount(0);
-  await page.getByRole('button', { name: 'Ver detalhes', exact: true }).first().click();
-  await expect(page.getByText('O que você encontrará')).toBeVisible();
+  await expect(page.getByText(/Novos eventos em breve/)).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Instagram', exact: true })).toHaveAttribute(
+    'href',
+    'https://www.instagram.com/ucb.sbg/',
+  );
+  await expect(page.locator('.event-list article')).toHaveCount(0);
+  await expect(page.getByRole('link', { name: /Fazer inscrição/ })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Ver detalhes', exact: true })).toHaveCount(0);
 });
 
 test('oferece um link oficial para entrar na comunidade', async ({ page }) => {
@@ -46,12 +41,13 @@ test('oferece um link oficial para entrar na comunidade', async ({ page }) => {
   await expect(page.getByRole('link', { name: /LinkedIn da comunidade/ })).toHaveAttribute('href', 'https://www.linkedin.com/company/aws-student-builder-group-ucb/');
 });
 
-test('abre os três álbuns públicos no Google Drive', async ({ page }) => {
+test('abre os álbuns públicos no Google Drive', async ({ page }) => {
   await page.goto('/fotos');
   const albuns = [
     ['Encontro de 24 de setembro', 'https://drive.google.com/drive/folders/1h6gxwq4cHBddIE_AiwifVg4TdlO2YQua?usp=drive_link'],
     ['Encontro de 30 de setembro', 'https://drive.google.com/drive/folders/1uzW1E_YRUWOqYhVtvSGDg0fmUfMLS8TG?usp=drive_link'],
     ['Universo Católica', 'https://drive.google.com/drive/folders/1Y6QaIkAU36UFhb0TK_xWjaQKmiVzZmf9?usp=drive_link'],
+    ['Golden Jacket', 'https://drive.google.com/drive/folders/1eLX9eF2XPOegO_Yxf3wT1RJNDMJFU7qc'],
   ];
   for (const [titulo, link] of albuns) {
     const album = page.getByRole('article').filter({ has: page.getByRole('heading', { name: titulo }) });
